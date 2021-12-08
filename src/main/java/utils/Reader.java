@@ -1,13 +1,7 @@
 package utils;
 
-import data.PersonsData;
-import models.Person;
-
 import java.io.File; // Import the File class
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner; // Import the Scanner class to read text files
-import java.util.function.Predicate;
 
 public class Reader {
     public static String read(String src) {

@@ -15,6 +15,5 @@ class PersonServiceTest {
         service.read(src);
 
         PersonsData data = PersonsData.getInstance();
-        assertTrue(data.getAll() != null);
     }
 }

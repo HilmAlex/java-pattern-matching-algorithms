@@ -5,7 +5,8 @@ import utils.BoyerMoore;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class PersonsData {
@@ -14,53 +15,61 @@ public class PersonsData {
 
     private List<Person> persons;
 
-    private PersonsData(){
+    private PersonsData() {
         persons = new ArrayList<Person>();
     }
 
-    public static PersonsData getInstance()
-    {
+    public static PersonsData getInstance() {
         if (instance == null)
             instance = new PersonsData();
 
         return instance;
     }
 
-    public void add(Person person){
-        if(!persons.contains(person)){
-            persons.add(person);
-            System.out.println("Successfully added");
+    public void add(Person person) {
+        if (persons.contains(person)) {
+            System.out.println("Person already exists." + person);
         } else {
-            System.out.println("Person already exists.");
+            persons.add(person);
         }
     }
 
-    public List<Person> getAll(){
-        return persons;
+    public List<Person> getByCondition(Predicate<Person> condition) {
+        return persons.stream().filter(condition).collect(Collectors.toList());
     }
 
-    public Person getOneById(String id){
-        return persons.stream().filter(person -> Objects.equals(person.getId(), id)).collect(Collectors.toList()).get(0);
+    // Base
+    public List<Person> getByEmail(String domain) {
+        return getByCondition(person -> person.getEmail().contains(domain));
     }
 
-    public List<Person> getByEmails(String[] domains){
+    // Ejemplo
+    public List<Person> getByEmailUsingBoyerMoore(String domain) {
+        return getByCondition(person -> BoyerMoore.find(person.getEmail(), domain) != -1);
+    }
+
+    // Personalizar algoritmo
+    public List<Person> getByEmails(String[] domains) {
         List<Person> data = new ArrayList<Person>();
 
-        for (String domain:
-             domains) {
+        for (String domain : domains) {
             data.addAll(getByEmail(domain));
         }
 
         return data;
     }
 
-    // Base
-    public List<Person> getByEmail(String domain){
-        return persons.stream().filter(person -> person.getEmail().contains(domain)).collect(Collectors.toList());
+    public List<Person> getByEmails(String[] domains, Function<String, List<Person>> method) {
+        List<Person> data = new ArrayList<Person>();
+
+        for (String domain : domains) {
+            data.addAll(method.apply(domain));
+        }
+
+        return data;
     }
 
-    // Ejemplo
-    public List<Person> getByEmailUsingBoyerMoore(String domain){
-        return persons.stream().filter(person -> BoyerMoore.find(person.getEmail(), domain) != -1).collect(Collectors.toList());
+    public List<Person> getByEmailsUsingBoyerMoore(String[] domains) {
+        return getByEmails(domains, domain -> getByEmailUsingBoyerMoore(domain));
     }
 }
