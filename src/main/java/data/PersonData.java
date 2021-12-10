@@ -38,25 +38,19 @@ public class PersonData {
         return persons.stream().filter(condition).collect(Collectors.toList());
     }
 
-    // Base
-    public List<Person> getByEmail(String domain) {
-        return getByCondition(person -> person.getEmail().contains(domain));
+    // Ejemplo
+    public List<Person> getByEmailUsingBruteForce(String domain) {
+        return getByCondition(person -> BruteForce.find(person.getEmail(), domain) != -1);
+    }
+
+    // Ejemplo
+    public List<Person> getByEmailUsingKMP(String domain) {
+        return getByCondition(person -> KMP.find(person.getEmail(), domain) != -1);
     }
 
     // Ejemplo
     public List<Person> getByEmailUsingBoyerMoore(String domain) {
         return getByCondition(person -> BoyerMoore.find(person.getEmail(), domain) != -1);
-    }
-
-    // Personalizar algoritmo
-    public List<Person> getByEmails(String[] domains) {
-        List<Person> data = new ArrayList<Person>();
-
-        for (String domain : domains) {
-            data.addAll(getByEmail(domain));
-        }
-
-        return data;
     }
 
     public List<Person> getByEmails(String[] domains, Function<String, List<Person>> method) {
@@ -67,6 +61,14 @@ public class PersonData {
         }
 
         return data;
+    }
+
+    public List<Person> getByEmailsUsingBruteForce(String[] domains) {
+        return getByEmails(domains, domain -> getByEmailUsingBruteForce(domain));
+    }
+
+    public List<Person> getByEmailsUsingKMP(String[] domains) {
+        return getByEmails(domains, domain -> getByEmailUsingKMP(domain));
     }
 
     public List<Person> getByEmailsUsingBoyerMoore(String[] domains) {

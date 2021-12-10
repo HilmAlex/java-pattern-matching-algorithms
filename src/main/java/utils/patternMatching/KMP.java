@@ -13,8 +13,8 @@ public class KMP {
         while (j < n) {
             if (ctext[j] == cpattern[k]) {
                 if (k == m - 1) {
+                    respuesta = (j - m + 1);
                     k = 0;
-                    respuesta = 0;
                 }
                 j++;
                 k++;
@@ -23,7 +23,7 @@ public class KMP {
             else
                 j++;
         }
-        return -1;
+        return respuesta;
     }
 
     private static int[] computeFailKMP(String pattern) {
@@ -44,4 +44,5 @@ public class KMP {
         }
         return fail;
     }
+
 }
