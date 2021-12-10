@@ -26,6 +26,7 @@ public class PersonService {
             File file = new File(src);
             Scanner myReader = new Scanner(file);
 
+            System.out.println("\nReading File\n" + "Source: "+src);
             while (myReader.hasNextLine()) {
                 String currentLine = myReader.nextLine();
                 String[] currentData = currentLine.split(",");

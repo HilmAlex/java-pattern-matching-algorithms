@@ -2,7 +2,7 @@ package models;
 
 import lombok.Data;
 
-@Data
+@Data 
 public class Person {
     private String id;
     private String name;
@@ -10,9 +10,9 @@ public class Person {
     private String email;
 
     public Person(String[] data){
-        this.id = data[0];
-        this.name = data[1];
-        this.lastName = data[2];
-        this.email = data[3];
+        this.setId(data[0]);
+        this.setName(data[1]);
+        this.setLastName(data[2]);
+        this.setEmail(data[3]);
     }
 }

@@ -20,22 +20,31 @@ public class Main {
         // Emails a buscar
         String[] emails = { "gmail.com", "yahoo.com" };
 
-        // Impresión de valores
-        List<Person> dataBM = data.getByEmailsUsingBoyerMoore(emails);
+        // Obtencion de datos
+        List<Person> dataBruteForce = data.getByEmailsUsingBruteForce(emails);
+        List<Person> dataKMP = data.getByEmailsUsingKMP(emails);
+        List<Person> dataBoyerMoore = data.getByEmailsUsingBoyerMoore(emails);
+
+        // Impresion
+        System.out.println("Personas que tienen un correo en gmail: " + dataKMP.size());
+        System.out.println("Nombres de dichas personas");
+        dataKMP.forEach(person -> {
+            System.out.println(person.getName());
+        });
 
         /* Rendimiento */
+        System.out.println("\nTiempo de ejecucion de cada algoritmo - Promedio de 1000000 ejecucionesgit");
 
         // Brute Force
-        Performance.time(domains -> data.getByEmailsUsingBoyerMoore(emails), emails);
+        System.out.println("\nFuerza Bruta");
+        Performance.time(domains -> data.getByEmailsUsingBruteForce(emails), emails);
 
         // KMP
-        Performance.time(domains -> data.getByEmailsUsingBoyerMoore(emails), emails);
-        
+        System.out.println("\nKMP");
+        Performance.time(domains -> data.getByEmailsUsingKMP(emails), emails);
+
         // Boyer Moore
+        System.out.println("\nBoyer Moore");
         Performance.time(domains -> data.getByEmailsUsingBoyerMoore(emails), emails);
-
-        
-
-        
     }
 }

@@ -18,8 +18,8 @@ class PersonsDataTest {
         service.read(src);
 
         String[] emails = {"gmail.com", "yahoo.com"};
-        List<Person> dataByEmail = PersonData.getInstance().getByEmail("gmail.com");
-        List<Person> dataByEmails = PersonData.getInstance().getByEmails(emails);
+        // List<Person> dataByEmail = PersonData.getInstance().getByEmail("gmail.com");
+        // List<Person> dataByEmails = PersonData.getInstance().getByEmails(emails);
 
         assertTrue("" != null);
     }

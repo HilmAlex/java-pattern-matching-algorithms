@@ -6,29 +6,53 @@ import java.util.function.Function;
 import models.Person;
 
 public class Performance {
-    public static Long time(Function<String, List<Person>> function, String param){
-        Long start = System.currentTimeMillis();
+    static int tests = 1000000;
 
-        function.apply(param);
+    public static Long time(Function<String, List<Person>> function, String param) {
+        Long executionTimeMS = 0l;
+        Long executionTimeNS = 0l;
 
-        Long end = System.currentTimeMillis();
-        Long executionTime = end-start;
+        for (int i = 0; i < tests; i++) {
+            Long startMS = System.currentTimeMillis();
+            Long startNS = System.nanoTime();
 
-        System.out.println("Execution time: " + executionTime +"ms.");
+            function.apply(param);
 
-        return executionTime;
+            Long endMS = System.currentTimeMillis();
+            Long endNS = System.nanoTime();
+
+            executionTimeMS += endMS - startMS;
+            executionTimeNS += endNS - startNS;
+        }
+
+        executionTimeMS /= tests;
+        executionTimeNS /= tests;
+        System.out.println("Execution time: " + executionTimeMS + "ms and " + executionTimeNS + " ns.");
+
+        return executionTimeMS;
     }
 
-    public static Long time(Function<String[], List<Person>> function, String[] param){
-        Long start = System.currentTimeMillis();
+    public static Long time(Function<String[], List<Person>> function, String[] param) {
+        Long executionTimeMS = 0l;
+        Long executionTimeNS = 0l;
 
-        function.apply(param);
+        for (int i = 0; i < tests; i++) {
+            Long startMS = System.currentTimeMillis();
+            Long startNS = System.nanoTime();
 
-        Long end = System.currentTimeMillis();
-        Long executionTime = end-start;
+            function.apply(param);
 
-        System.out.println("Execution time: " + executionTime +"ms.");
+            Long endMS = System.currentTimeMillis();
+            Long endNS = System.nanoTime();
 
-        return executionTime;
+            executionTimeMS += endMS - startMS;
+            executionTimeNS += endNS - startNS;
+        }
+
+        executionTimeMS /= tests;
+        executionTimeNS /= tests;
+        System.out.println("Execution time: " + executionTimeMS + "ms and " + executionTimeNS + " ns.");
+
+        return executionTimeMS;
     }
 }
