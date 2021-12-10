@@ -1,7 +1,7 @@
 package data;
 
 import models.Person;
-import utils.BoyerMoore;
+import utils.patternMatching.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,19 +9,19 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-public class PersonsData {
+public class PersonData {
 
-    private static PersonsData instance = null;
+    private static PersonData instance = null;
 
     private List<Person> persons;
 
-    private PersonsData() {
+    private PersonData() {
         persons = new ArrayList<Person>();
     }
 
-    public static PersonsData getInstance() {
+    public static PersonData getInstance() {
         if (instance == null)
-            instance = new PersonsData();
+            instance = new PersonData();
 
         return instance;
     }

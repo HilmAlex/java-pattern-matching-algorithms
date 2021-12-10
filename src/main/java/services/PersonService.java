@@ -1,6 +1,6 @@
 package services;
 
-import data.PersonsData;
+import data.PersonData;
 import models.Person;
 
 import java.io.File;
@@ -22,7 +22,7 @@ public class PersonService {
 
     public void read(String src) {
         try {
-            PersonsData persons = PersonsData.getInstance();
+            PersonData persons = PersonData.getInstance();
             File file = new File(src);
             Scanner myReader = new Scanner(file);
 

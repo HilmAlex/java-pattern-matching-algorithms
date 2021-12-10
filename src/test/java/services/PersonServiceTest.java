@@ -1,6 +1,6 @@
 package services;
 
-import data.PersonsData;
+import data.PersonData;
 import models.Person;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
@@ -14,6 +14,6 @@ class PersonServiceTest {
         String src = "C:\\Users\\perso\\IdeaProjects\\demo-pattern-matching-algorithms\\src\\main\\resources\\LeakedData.txt";
         service.read(src);
 
-        PersonsData data = PersonsData.getInstance();
+        PersonData data = PersonData.getInstance();
     }
 }
