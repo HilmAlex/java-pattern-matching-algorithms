@@ -7,5 +7,6 @@
 ## Cómo construir todos los paquetes
 
 1. Clone este repositorio y vaya a la carpeta raíz del repositorio.
+    https://github.com/HilmAlex/java-pattern-matching-algorithms
 
 2. Ejecute el siguiente comando para compilar `mvn clean install`
