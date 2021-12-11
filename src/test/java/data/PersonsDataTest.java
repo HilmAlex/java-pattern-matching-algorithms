@@ -1,7 +1,8 @@
 package data;
 
-import models.Person;
 import org.junit.jupiter.api.Test;
+
+import model.Person;
 import services.PersonService;
 
 import java.io.File;

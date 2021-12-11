@@ -1,5 +1,6 @@
 package utils;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.Before;
@@ -17,7 +18,7 @@ public class patternMatchingTest {
 
     @Before
     public void init() {
-        texts = new String[] { "Esto es una prueba xd" };
+        texts = new String[] { "Esto es una prueba" };
         patterns = new String[] { "una" };
         occurrences = new int[] { 8 };
         testCases = texts.length;
@@ -25,32 +26,32 @@ public class patternMatchingTest {
 
     @Test
     public void bruteForce() {
-        int[] currentOccurrences = new int[texts.length];
-        for (int i = 0; i < texts.length; i++) {
+        int[] currentOccurrences = new int[testCases];
+        for (int i = 0; i < testCases; i++) {
             currentOccurrences[i] = BruteForce.find(texts[i], patterns[i]);
         }
 
-        assertEquals(currentOccurrences, occurrences);
+        assertArrayEquals(currentOccurrences, occurrences);
     }
 
     @Test
     public void KMP() {
-        int[] currentOccurrences = new int[texts.length];
-        for (int i = 0; i < texts.length; i++) {
+        int[] currentOccurrences = new int[testCases];
+        for (int i = 0; i < testCases; i++) {
             currentOccurrences[i] = KMP.find(texts[i], patterns[i]);
         }
 
-        assertEquals(currentOccurrences, occurrences);
+        assertArrayEquals(currentOccurrences, occurrences);
     }
 
     @Test
     public void boyerMoore() {
-        int[] currentOccurrences = new int[texts.length];
-        for (int i = 0; i < texts.length; i++) {
+        int[] currentOccurrences = new int[testCases];
+        for (int i = 0; i < testCases; i++) {
             currentOccurrences[i] = BoyerMoore.find(texts[i], patterns[i]);
         }
 
-        assertEquals(currentOccurrences, occurrences);
+        assertArrayEquals(currentOccurrences, occurrences);
     }
 
 }

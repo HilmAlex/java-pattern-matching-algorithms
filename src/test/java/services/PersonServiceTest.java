@@ -1,7 +1,8 @@
 package services;
 
 import data.PersonData;
-import models.Person;
+import model.Person;
+
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 

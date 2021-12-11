@@ -3,7 +3,7 @@ package utils;
 import java.util.List;
 import java.util.function.Function;
 
-import models.Person;
+import model.Person;
 
 public class Performance {
     static int tests = 1000000;

@@ -1,7 +1,7 @@
 package services;
 
 import data.PersonData;
-import models.Person;
+import model.Person;
 
 import java.io.File;
 import java.util.Scanner;

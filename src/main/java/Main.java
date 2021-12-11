@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 import data.PersonData;
-import models.Person;
+import model.Person;
 import services.PersonService;
 import utils.Performance;
 
@@ -27,13 +27,13 @@ public class Main {
 
         // Impresion
         System.out.println("Personas que tienen un correo en gmail: " + dataKMP.size());
-        System.out.println("Nombres de dichas personas");
+        System.out.println("Nombres y apellidos de dichas personas");
         dataKMP.forEach(person -> {
-            System.out.println(person.getName());
+            System.out.println(person.getName() + " " + person.getLastName());
         });
 
         /* Rendimiento */
-        System.out.println("\nTiempo de ejecucion de cada algoritmo - Promedio de 1000000 ejecucionesgit");
+        System.out.println("\nTiempo de ejecucion de cada algoritmo - Promedio de 1 millon de ejecuciones");
 
         // Brute Force
         System.out.println("\nFuerza Bruta");

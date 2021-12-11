@@ -1,6 +1,5 @@
 package data;
 
-import models.Person;
 import utils.patternMatching.*;
 
 import java.util.ArrayList;
@@ -8,6 +7,8 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+
+import model.Person;
 
 public class PersonData {
 
